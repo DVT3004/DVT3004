@@ -143,15 +143,11 @@ $ dvt --motto
 
 ### 🐍 Snake Mode
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-purple.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake.svg"/>
-  <img alt="Snake eating my contributions" src="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-purple.svg"/>
-</picture>
+<img src="./snake.svg" alt="Snake eating DVT3004's contributions" width="840"/>
 
 ### 👾 PAC-MAN Mode
 
-<img src="https://raw.githubusercontent.com/DVT3004/DVT3004/output/pacman.svg" alt="Pac-Man eating my contributions"/>
+<img src="./pacman.svg" alt="Pac-Man eating DVT3004's contributions" width="840"/>
 
 </div>
 
