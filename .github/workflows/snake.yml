@@ -1,4 +1,4 @@
-name: 🐍 Snake & 👾 Pac-Man Contributions
+name: 🎮 Contribution Games — Snake & Pac-Man
 
 on:
   schedule:
@@ -7,12 +7,12 @@ on:
 
 jobs:
   generate-snake:
-    name: Generate Snake Animation
+    name: 🐍 Generate Snake Animation
     permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Snake
+      - name: Generate Snake SVGs
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: DVT3004
@@ -21,7 +21,7 @@ jobs:
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/github-contribution-grid-snake-purple.svg?color_snake=e040fb&color_dots=#0d1117,#3d1b70,#6a0dad,#9b30ff,#e040fb
 
-      - name: Push to output branch
+      - name: Push Snake to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
@@ -30,21 +30,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   generate-pacman:
-    name: Generate Pac-Man Animation
+    name: 👾 Generate Pac-Man Animation
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    needs: generate-snake
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Generate Pac-Man
+      - name: Generate Pac-Man SVG
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: DVT3004
           outputs: |
             dist/pacman.svg?color_snake=FFD700&color_dots=#0d1117,#1a1a4e,#3a0a7a,#6a0dad,#e040fb
 
-      - name: Push to output branch
+      - name: Push Pac-Man to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
