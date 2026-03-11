@@ -93,14 +93,17 @@ class DVT3004 {
 
 ---
 
-## 🐍 Snake
+## 🐍 Contribution Snake
 
 <div align="center">
+
+<!-- Snake tím/hồng custom (chạy sau khi trigger Actions) -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-dark.svg"/>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-purple.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake.svg"/>
-  <img alt="snake" src="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-dark.svg"/>
+  <img alt="Purple Snake eating contributions" src="https://raw.githubusercontent.com/DVT3004/DVT3004/output/github-contribution-grid-snake-purple.svg"/>
 </picture>
+
 </div>
 
 ---
