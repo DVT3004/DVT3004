@@ -3,160 +3,230 @@
   <linearGradient id="cbg" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#060011"/><stop offset="100%" stop-color="#0D1117"/>
   </linearGradient>
-  <linearGradient id="cardface" x1="0%" y1="0%" x2="0%" y2="100%">
+  <linearGradient id="cf" x1="0%" y1="0%" x2="0%" y2="100%">
     <stop offset="0%" stop-color="#1a1040"/><stop offset="100%" stop-color="#0d0825"/>
   </linearGradient>
-  <linearGradient id="rim1" x1="0%" y1="0%" x2="100%" y2="100%">
+  <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#e040fb"/><stop offset="100%" stop-color="#7c4dff"/>
   </linearGradient>
-  <linearGradient id="rim2" x1="0%" y1="0%" x2="100%" y2="100%">
+  <linearGradient id="r2" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#7c4dff"/><stop offset="100%" stop-color="#00e5ff"/>
   </linearGradient>
-  <filter id="cardGlow">
-    <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="textGlow">
-    <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="orbitGlow">
-    <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
+  <!-- Card back gradient -->
+  <linearGradient id="cardback" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#2a0845"/><stop offset="50%" stop-color="#1a0530"/><stop offset="100%" stop-color="#2a0845"/>
+  </linearGradient>
+  <filter id="cg"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="tg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+
+  <!-- Pattern for card back -->
+  <pattern id="backpat" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+    <rect width="10" height="10" fill="none"/>
+    <path d="M0,5 L5,0 L10,5 L5,10 Z" fill="#7c4dff" opacity="0.15"/>
+  </pattern>
 </defs>
 
 <!-- Background -->
 <rect width="840" height="260" fill="url(#cbg)" rx="10"/>
 
-<!-- Orbit ring (decorative) -->
-<ellipse cx="420" cy="130" rx="200" ry="80" fill="none" stroke="#7c4dff" stroke-width="0.8" opacity="0.15"/>
-<ellipse cx="420" cy="130" rx="200" ry="80" fill="none" stroke="#e040fb" stroke-width="0.5" opacity="0.08" stroke-dasharray="6,8"/>
+<!-- Orbit rings -->
+<ellipse cx="420" cy="130" rx="220" ry="75" fill="none" stroke="#7c4dff" stroke-width="0.6" opacity="0.12"/>
+<ellipse cx="420" cy="130" rx="220" ry="75" fill="none" stroke="#e040fb" stroke-width="0.4" opacity="0.06" stroke-dasharray="4,6"/>
 
-<!-- Orbit sparkle particles -->
-<circle cx="0" cy="0" r="2" fill="#e040fb" opacity="0.7">
-  <animateMotion dur="12s" repeatCount="indefinite" path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.5s" repeatCount="indefinite"/>
+<!-- Orbit sparkles -->
+<circle r="2" fill="#e040fb" opacity="0.6">
+  <animateMotion dur="12s" repeatCount="indefinite" path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/>
 </circle>
-<circle cx="0" cy="0" r="1.5" fill="#7c4dff" opacity="0.6">
-  <animateMotion dur="12s" repeatCount="indefinite" begin="-6s" path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" repeatCount="indefinite"/>
+<circle r="1.5" fill="#7c4dff" opacity="0.5">
+  <animateMotion dur="12s" repeatCount="indefinite" begin="-6s" path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/>
 </circle>
 
-<!-- ═══════ 7 CARDS orbiting the center ═══════ -->
-<!-- Each card follows an elliptical path (animateMotion)  -->
-<!-- Card size: 50x72 rectpath, with a symbol/number on it -->
-<!-- Speed: 12s full orbit, stagger = 12/7 ≈ 1.714s begin offset each -->
+<!--
+  3D EFFECT: Each card has synchronized animations:
+  1. animateMotion → elliptical orbit path
+  2. animateTransform scale → big at front (bottom), small at back (top) + scaleX flips to simulate turning
+  3. animate opacity → bright at front, dim at back
 
-<!-- CARD 1 — ♠ A -->
-<g filter="url(#cardGlow)">
+  Scale X flips: front=1, sides=0 (edge-on), back=-1 but we use scaleX 1→0→-0.6→0→1
+  Scale Y: front=1.15 (closer=bigger), back=0.65 (further=smaller)
+  Opacity: front=1, back=0.3
+
+  12s cycle, 7 cards, stagger = 12/7 ≈ 1.714s
+-->
+
+<!-- ═══ CARD 1 — A♠ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="0s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim1)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#e040fb" text-anchor="middle" font-weight="bold">A</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#e040fb" text-anchor="middle">&#9824;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <!-- 3D scale: scaleX flips, scaleY = depth size -->
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="0s" repeatCount="indefinite"/>
+    <!-- Card face -->
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r1)" stroke-width="1.5"/>
+    <!-- Back pattern overlay (visible when "flipped") -->
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#e040fb" text-anchor="middle" font-weight="bold">A</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#e040fb" text-anchor="middle">&#9824;</text>
+    <!-- Corner labels -->
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#e040fb" opacity="0.6">A</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#e040fb" opacity="0.6">A</text>
+  </g>
 </g>
 
-<!-- CARD 2 — ♥ K -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 2 — K♥ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-1.714s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim2)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#7c4dff" text-anchor="middle" font-weight="bold">K</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#ff3366" text-anchor="middle">&#9829;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-1.714s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-1.714s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r2)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#ff3366" text-anchor="middle" font-weight="bold">K</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#ff3366" text-anchor="middle">&#9829;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#ff3366" opacity="0.6">K</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#ff3366" opacity="0.6">K</text>
+  </g>
 </g>
 
-<!-- CARD 3 — ♦ 7 -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 3 — 7♦ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-3.428s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim1)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#e040fb" text-anchor="middle" font-weight="bold">7</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#ff8c00" text-anchor="middle">&#9830;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-3.428s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-3.428s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r1)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#ff8c00" text-anchor="middle" font-weight="bold">7</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#ff8c00" text-anchor="middle">&#9830;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#ff8c00" opacity="0.6">7</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#ff8c00" opacity="0.6">7</text>
+  </g>
 </g>
 
-<!-- CARD 4 — ♣ J -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 4 — J♣ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-5.142s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim2)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#7c4dff" text-anchor="middle" font-weight="bold">J</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#00e5ff" text-anchor="middle">&#9827;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-5.142s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-5.142s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r2)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#00e5ff" text-anchor="middle" font-weight="bold">J</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#00e5ff" text-anchor="middle">&#9827;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#00e5ff" opacity="0.6">J</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#00e5ff" opacity="0.6">J</text>
+  </g>
 </g>
 
-<!-- CARD 5 — ♠ 3 -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 5 — 3♠ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-6.857s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim1)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#e040fb" text-anchor="middle" font-weight="bold">3</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#e040fb" text-anchor="middle">&#9824;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-6.857s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-6.857s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r1)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#e040fb" text-anchor="middle" font-weight="bold">3</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#e040fb" text-anchor="middle">&#9824;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#e040fb" opacity="0.6">3</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#e040fb" opacity="0.6">3</text>
+  </g>
 </g>
 
-<!-- CARD 6 — ♥ Q -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 6 — Q♥ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-8.571s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim2)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="16" fill="#7c4dff" text-anchor="middle" font-weight="bold">Q</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#ff3366" text-anchor="middle">&#9829;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-8.571s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-8.571s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r2)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="18" fill="#ff3366" text-anchor="middle" font-weight="bold">Q</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#ff3366" text-anchor="middle">&#9829;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="8" fill="#ff3366" opacity="0.6">Q</text>
+    <text x="12" y="30" font-family="monospace" font-size="8" fill="#ff3366" opacity="0.6">Q</text>
+  </g>
 </g>
 
-<!-- CARD 7 — ♦ 10 -->
-<g filter="url(#cardGlow)">
+<!-- ═══ CARD 7 — 10♦ ═══ -->
+<g filter="url(#cg)">
   <animateMotion dur="12s" repeatCount="indefinite" begin="-10.285s"
-    path="M420,130 m-200,0 a200,80 0 1,0 400,0 a200,80 0 1,0 -400,0"/>
-  <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cardface)" stroke="url(#rim1)" stroke-width="1.5"/>
-  <text x="0" y="-10" font-family="'Courier New',monospace" font-size="14" fill="#e040fb" text-anchor="middle" font-weight="bold">10</text>
-  <text x="0" y="12" font-family="serif" font-size="20" fill="#ff8c00" text-anchor="middle">&#9830;</text>
+    path="M420,130 m-220,0 a220,75 0 1,0 440,0 a220,75 0 1,0 -440,0"/>
+  <g>
+    <animateTransform attributeName="transform" type="scale"
+      values="0.65,0.65; 1,0.85; 1.15,1.15; 1,0.85; 0.65,0.65"
+      keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-10.285s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;1;0.7;0.3" keyTimes="0;0.25;0.5;0.75;1" dur="12s" begin="-10.285s" repeatCount="indefinite"/>
+    <rect x="-25" y="-36" width="50" height="72" rx="6" fill="url(#cf)" stroke="url(#r1)" stroke-width="1.5"/>
+    <rect x="-23" y="-34" width="46" height="68" rx="4" fill="url(#backpat)" opacity="0.3"/>
+    <text x="0" y="-8" font-family="'Courier New',monospace" font-size="16" fill="#ff8c00" text-anchor="middle" font-weight="bold">10</text>
+    <text x="0" y="16" font-family="serif" font-size="22" fill="#ff8c00" text-anchor="middle">&#9830;</text>
+    <text x="-18" y="-22" font-family="monospace" font-size="7" fill="#ff8c00" opacity="0.6">10</text>
+    <text x="10" y="30" font-family="monospace" font-size="7" fill="#ff8c00" opacity="0.6">10</text>
+  </g>
 </g>
 
-<!-- Center: glowing "DVT" text that pulses -->
-<text x="420" y="125" font-family="'Courier New',monospace" font-size="28" font-weight="bold"
-      fill="#e040fb" text-anchor="middle" filter="url(#textGlow)" opacity="0.3">DVT3004</text>
-<text x="420" y="125" font-family="'Courier New',monospace" font-size="28" font-weight="bold"
-      fill="#e040fb" text-anchor="middle">
-  DVT3004
+<!-- Central glow ring -->
+<circle cx="420" cy="130" r="35" fill="none" stroke="#e040fb" stroke-width="1" opacity="0.15">
+  <animate attributeName="r" values="30;38;30" dur="3s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0.15;0.05;0.15" dur="3s" repeatCount="indefinite"/>
+</circle>
+
+<!-- Center: DVT3004 -->
+<text x="420" y="126" font-family="'Courier New',monospace" font-size="20" font-weight="bold"
+      fill="#e040fb" text-anchor="middle" filter="url(#tg)" opacity="0.2">DVT3004</text>
+<text x="420" y="126" font-family="'Courier New',monospace" font-size="20" font-weight="bold"
+      fill="#e040fb" text-anchor="middle">DVT3004
   <animate attributeName="opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
 </text>
 
-<!-- Center random number flipper: shows changing numbers inside a small box -->
-<rect x="394" y="135" width="52" height="28" rx="6" fill="#0d0825" stroke="#7c4dff" stroke-width="1" opacity="0.8"/>
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle">
-  <animate attributeName="textContent" values="#3004;#7777;#1337;#0420;#2025;#9999;#3004" dur="7s" repeatCount="indefinite"/>
-  #3004
+<!-- Number flipper -->
+<rect x="396" y="135" width="48" height="22" rx="5" fill="#0d0825" stroke="#7c4dff" stroke-width="0.8" opacity="0.8"/>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle">#3004</text>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" opacity="0">
+  #7777<animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="7s" repeatCount="indefinite"/>
 </text>
-<!-- Fallback: animated opacity to simulate number change -->
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle" opacity="0">
-  #7777
-  <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0;0;0" dur="7s" repeatCount="indefinite"/>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" opacity="0">
+  #1337<animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="7s" repeatCount="indefinite"/>
 </text>
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle" opacity="0">
-  #1337
-  <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0;0;0" dur="7s" repeatCount="indefinite"/>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" opacity="0">
+  #0420<animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="7s" repeatCount="indefinite"/>
 </text>
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle" opacity="0">
-  #0420
-  <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0;0;0" dur="7s" repeatCount="indefinite"/>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" opacity="0">
+  #2026<animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="7s" repeatCount="indefinite"/>
 </text>
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle" opacity="0">
-  #2026
-  <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0;0;0" dur="7s" repeatCount="indefinite"/>
-</text>
-<text x="420" y="155" font-family="'Courier New',monospace" font-size="16" font-weight="bold"
-      fill="#00e5ff" text-anchor="middle" opacity="0">
-  #9999
-  <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1;0;0" dur="7s" repeatCount="indefinite"/>
+<text x="420" y="152" font-family="'Courier New',monospace" font-size="14" font-weight="bold" fill="#00e5ff" text-anchor="middle" opacity="0">
+  #9999<animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="7s" repeatCount="indefinite"/>
 </text>
 
-<!-- Bottom text -->
-<text x="420" y="245" font-family="monospace" font-size="10" fill="#7c4dff" text-anchor="middle" opacity="0.5">Lucky Cards — Spin the deck!</text>
+<!-- Bottom -->
+<text x="420" y="248" font-family="monospace" font-size="10" fill="#7c4dff" text-anchor="middle" opacity="0.5">&#9827; Lucky Cards &#8212; 3D Orbit &#9824;</text>
 
 <!-- Ambient particles -->
-<circle cx="100" cy="60"  r="1.5" fill="#e040fb" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
-<circle cx="740" cy="200" r="1.5" fill="#7c4dff" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
-<circle cx="200" cy="220" r="1" fill="#00e5ff" opacity="0.3"><animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/></circle>
-<circle cx="650" cy="40"  r="1" fill="#e040fb" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.5s" repeatCount="indefinite"/></circle>
+<circle cx="80" cy="50" r="1.5" fill="#e040fb" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="760" cy="210" r="1.5" fill="#7c4dff" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/></circle>
+<circle cx="170" cy="230" r="1" fill="#00e5ff" opacity="0.3"><animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="680" cy="35" r="1" fill="#e040fb" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.5s" repeatCount="indefinite"/></circle>
+<circle cx="50" cy="150" r="1" fill="#ff3366" opacity="0.3"><animate attributeName="opacity" values="0.3;0.05;0.3" dur="2.8s" repeatCount="indefinite"/></circle>
+<circle cx="790" cy="120" r="1" fill="#00e5ff" opacity="0.25"><animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.2s" repeatCount="indefinite"/></circle>
 </svg>
