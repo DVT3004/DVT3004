@@ -99,18 +99,18 @@
   </rect>
 
   <!-- GLOW behind name -->
-  <text x="445" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
+  <text x="450" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
         text-anchor="middle" fill="#e040fb" filter="url(#bigGlow)" opacity="0.3">DVT3004</text>
 
   <!-- Main name with subtle pulse -->
-  <text x="445" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
+  <text x="450" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
         text-anchor="middle" fill="url(#nameGrad)" filter="url(#neon)" letter-spacing="5">
     DVT3004
     <animate attributeName="opacity" values="1;0.88;1" dur="4s" repeatCount="indefinite"/>
   </text>
 
   <!-- Typing cursor blinking -->
-  <rect x="693" y="55" width="4" height="42" rx="1" fill="#e040fb">
+  <rect x="700" y="58" width="4" height="38" rx="1" fill="#e040fb">
     <animate attributeName="opacity" values="1;0;1" dur="0.8s" repeatCount="indefinite"/>
   </rect>
 
