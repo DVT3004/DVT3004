@@ -100,7 +100,7 @@
 
   <!-- GLOW behind name -->
   <text x="450" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
-        text-anchor="middle" fill="#e040fb" filter="url(#bigGlow)" opacity="0.3">DVT3004</text>
+        text-anchor="middle" fill="#e040fb" filter="url(#bigGlow)" opacity="0.3" letter-spacing="5">DVT3004</text>
 
   <!-- Main name with subtle pulse -->
   <text x="450" y="90" font-family="'Courier New', Courier, monospace" font-size="56" font-weight="bold"
