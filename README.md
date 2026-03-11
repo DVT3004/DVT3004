@@ -137,11 +137,11 @@ $ dvt --motto
 
 ---
 
-## 🎮 Contributions — Snake Mode
+## 🃏 Lucky Cards — Spin the Deck!
 
 <div align="center">
 
-<img src="./snake.svg" alt="Snake eating DVT3004's contributions" width="840"/>
+<img src="./cards.svg" alt="7 lucky cards spinning around DVT3004" width="840"/>
 
 </div>
 
