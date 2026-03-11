@@ -1,0 +1,53 @@
+<svg viewBox="0 0 840 72" width="840" height="72" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#e040fb"/>
+    <stop offset="50%" stop-color="#c792ea"/>
+    <stop offset="100%" stop-color="#7c4dff"/>
+  </linearGradient>
+</defs>
+<rect width="840" height="72" fill="#0d1117" rx="8"/>
+<line x1="80" y1="36" x2="760" y2="36" stroke="#7c4dff" stroke-width="0.5" opacity="0.2"/>
+
+<!--
+  Quote: "Ship it. Learn it. Repeat."
+  27 chars, font-size=22 monospace, ~13px per char → total ~351px, start x=244
+  Each char bounces up (translateY -9) in sequence (wave) via SMIL animateTransform
+  dur=2s, stagger=0.074s per char, begin = i * 0.074 (positive so they start staggered)
+  values: "0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" = quick bounce then rest
+-->
+<g font-family="'Courier New',Courier,monospace" font-size="22" font-weight="bold" fill="url(#tg)">
+
+<text x="244" y="46">S<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0s" repeatCount="indefinite"/></text>
+<text x="257" y="46">h<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.074s" repeatCount="indefinite"/></text>
+<text x="270" y="46">i<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.148s" repeatCount="indefinite"/></text>
+<text x="283" y="46">p<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.222s" repeatCount="indefinite"/></text>
+<text x="296" y="46"> <animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.296s" repeatCount="indefinite"/></text>
+<text x="309" y="46">i<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.370s" repeatCount="indefinite"/></text>
+<text x="322" y="46">t<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.444s" repeatCount="indefinite"/></text>
+<text x="335" y="46">.<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.518s" repeatCount="indefinite"/></text>
+<text x="348" y="46"> <animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.592s" repeatCount="indefinite"/></text>
+<text x="361" y="46">L<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.666s" repeatCount="indefinite"/></text>
+<text x="374" y="46">e<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.740s" repeatCount="indefinite"/></text>
+<text x="387" y="46">a<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.814s" repeatCount="indefinite"/></text>
+<text x="400" y="46">r<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.888s" repeatCount="indefinite"/></text>
+<text x="413" y="46">n<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="0.962s" repeatCount="indefinite"/></text>
+<text x="426" y="46"> <animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.036s" repeatCount="indefinite"/></text>
+<text x="439" y="46">i<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.110s" repeatCount="indefinite"/></text>
+<text x="452" y="46">t<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.184s" repeatCount="indefinite"/></text>
+<text x="465" y="46">.<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.258s" repeatCount="indefinite"/></text>
+<text x="478" y="46"> <animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.332s" repeatCount="indefinite"/></text>
+<text x="491" y="46">R<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.406s" repeatCount="indefinite"/></text>
+<text x="504" y="46">e<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.480s" repeatCount="indefinite"/></text>
+<text x="517" y="46">p<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.554s" repeatCount="indefinite"/></text>
+<text x="530" y="46">e<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.628s" repeatCount="indefinite"/></text>
+<text x="543" y="46">a<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.702s" repeatCount="indefinite"/></text>
+<text x="556" y="46">t<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.776s" repeatCount="indefinite"/></text>
+<text x="569" y="46">.<animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.850s" repeatCount="indefinite"/></text>
+<text x="582" y="46"> <animateTransform attributeName="transform" type="translate" values="0,0;0,-9;0,0;0,0" keyTimes="0;0.15;0.3;1" dur="2s" begin="1.924s" repeatCount="indefinite"/></text>
+
+</g>
+
+<!-- Small attribution label -->
+<text x="420" y="64" font-family="monospace" font-size="10" fill="#7c4dff" text-anchor="middle" opacity="0.6">— DVT3004's motto</text>
+</svg>

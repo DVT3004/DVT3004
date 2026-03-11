@@ -1,0 +1,119 @@
+<svg viewBox="0 0 840 128" width="840" height="128" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="mg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <radialGradient id="spotlight" cx="50%" cy="50%" r="55%">
+    <stop offset="0%" stop-color="#001a00" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000800" stop-opacity="0.8"/>
+  </radialGradient>
+</defs>
+<rect width="840" height="128" fill="#050a05" rx="8"/>
+<rect width="840" height="128" fill="url(#spotlight)" rx="8"/>
+
+<!-- ═══ MATRIX CODE RAIN — 24 columns, each is a falling stream ═══ -->
+<!-- Each <g> translates from y=-96 to y=260 at its own speed/phase -->
+<!-- Colors: lead=#00ff41, then fading #00cc33 → #009922 → #006611 → #003308 → dim -->
+
+<g font-size="13" font-family="'Courier New',monospace" text-anchor="middle">
+
+<!-- Col x=17 dur=2.0 begin=-0.5 -->
+<g><animateTransform attributeName="transform" type="translate" from="17,-96" to="17,260" dur="2.0s" begin="-0.5s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">1</text><text y="32" fill="#009922">{</text><text y="48" fill="#006611">}</text><text y="64" fill="#003308">;</text><text y="80" fill="#001a04">=</text></g>
+
+<!-- Col x=52 dur=1.7 begin=-0.9 -->
+<g><animateTransform attributeName="transform" type="translate" from="52,-96" to="52,260" dur="1.7s" begin="-0.9s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">1</text><text y="16" fill="#00cc33">/</text><text y="32" fill="#009922">*</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">{</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=87 dur=2.8 begin=-1.2 -->
+<g><animateTransform attributeName="transform" type="translate" from="87,-96" to="87,260" dur="2.8s" begin="-1.2s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">}</text><text y="16" fill="#00cc33">;</text><text y="32" fill="#009922">=</text><text y="48" fill="#006611">&lt;</text><text y="64" fill="#003308">&gt;</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=122 dur=1.5 begin=-0.3 -->
+<g><animateTransform attributeName="transform" type="translate" from="122,-96" to="122,260" dur="1.5s" begin="-0.3s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">1</text><text y="32" fill="#009922">1</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=157 dur=2.2 begin=-1.5 -->
+<g><animateTransform attributeName="transform" type="translate" from="157,-96" to="157,260" dur="2.2s" begin="-1.5s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">#</text><text y="16" fill="#00cc33">@</text><text y="32" fill="#009922">!</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">{</text></g>
+
+<!-- Col x=192 dur=3.0 begin=-0.7 -->
+<g><animateTransform attributeName="transform" type="translate" from="192,-96" to="192,260" dur="3.0s" begin="-0.7s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">&lt;</text><text y="16" fill="#00cc33">&gt;</text><text y="32" fill="#009922">/</text><text y="48" fill="#006611">*</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=227 dur=1.8 begin=-1.0 -->
+<g><animateTransform attributeName="transform" type="translate" from="227,-96" to="227,260" dur="1.8s" begin="-1.0s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">f</text><text y="16" fill="#00cc33">n</text><text y="32" fill="#009922">(</text><text y="48" fill="#006611">)</text><text y="64" fill="#003308">{</text><text y="80" fill="#001a04">}</text></g>
+
+<!-- Col x=262 dur=2.5 begin=-0.2 -->
+<g><animateTransform attributeName="transform" type="translate" from="262,-96" to="262,260" dur="2.5s" begin="-0.2s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">1</text><text y="16" fill="#00cc33">0</text><text y="32" fill="#009922">1</text><text y="48" fill="#006611">1</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=297 dur=1.4 begin=-1.3 -->
+<g><animateTransform attributeName="transform" type="translate" from="297,-96" to="297,260" dur="1.4s" begin="-1.3s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">;</text><text y="16" fill="#00cc33">=</text><text y="32" fill="#009922">+</text><text y="48" fill="#006611">-</text><text y="64" fill="#003308">*</text><text y="80" fill="#001a04">/</text></g>
+
+<!-- Col x=332 dur=2.0 begin=-0.9 -->
+<g><animateTransform attributeName="transform" type="translate" from="332,-96" to="332,260" dur="2.0s" begin="-0.9s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">0</text><text y="32" fill="#009922">1</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=367 dur=3.5 begin=-0.4 -->
+<g><animateTransform attributeName="transform" type="translate" from="367,-96" to="367,260" dur="3.5s" begin="-0.4s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">v</text><text y="16" fill="#00cc33">a</text><text y="32" fill="#009922">r</text><text y="48" fill="#006611"> </text><text y="64" fill="#003308">x</text><text y="80" fill="#001a04">=</text></g>
+
+<!-- Col x=402 dur=1.7 begin=-1.1 -->
+<g><animateTransform attributeName="transform" type="translate" from="402,-96" to="402,260" dur="1.7s" begin="-1.1s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">{</text><text y="16" fill="#00cc33">}</text><text y="32" fill="#009922">;</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=437 dur=2.3 begin=-0.6 -->
+<g filter="url(#mg)"><animateTransform attributeName="transform" type="translate" from="437,-96" to="437,260" dur="2.3s" begin="-0.6s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff88" font-weight="bold">D</text><text y="16" fill="#00cc44" font-weight="bold">V</text><text y="32" fill="#009933" font-weight="bold">T</text><text y="48" fill="#006611">3</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">4</text></g>
+
+<!-- Col x=472 dur=1.5 begin=-1.4 -->
+<g><animateTransform attributeName="transform" type="translate" from="472,-96" to="472,260" dur="1.5s" begin="-1.4s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">1</text><text y="16" fill="#00cc33">0</text><text y="32" fill="#009922">0</text><text y="48" fill="#006611">1</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=507 dur=2.8 begin=-0.1 -->
+<g><animateTransform attributeName="transform" type="translate" from="507,-96" to="507,260" dur="2.8s" begin="-0.1s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">l</text><text y="16" fill="#00cc33">e</text><text y="32" fill="#009922">t</text><text y="48" fill="#006611"> </text><text y="64" fill="#003308">i</text><text y="80" fill="#001a04">=</text></g>
+
+<!-- Col x=542 dur=1.9 begin=-0.8 -->
+<g><animateTransform attributeName="transform" type="translate" from="542,-96" to="542,260" dur="1.9s" begin="-0.8s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">1</text><text y="32" fill="#009922">0</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=577 dur=2.1 begin=-1.2 -->
+<g><animateTransform attributeName="transform" type="translate" from="577,-96" to="577,260" dur="2.1s" begin="-1.2s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">[</text><text y="16" fill="#00cc33">]</text><text y="32" fill="#009922">=</text><text y="48" fill="#006611">&gt;</text><text y="64" fill="#003308">{</text><text y="80" fill="#001a04">}</text></g>
+
+<!-- Col x=612 dur=1.6 begin=-0.5 -->
+<g><animateTransform attributeName="transform" type="translate" from="612,-96" to="612,260" dur="1.6s" begin="-0.5s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">1</text><text y="16" fill="#00cc33">1</text><text y="32" fill="#009922">0</text><text y="48" fill="#006611">1</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=647 dur=3.0 begin=-1.0 -->
+<g><animateTransform attributeName="transform" type="translate" from="647,-96" to="647,260" dur="3.0s" begin="-1.0s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">a</text><text y="16" fill="#00cc33">s</text><text y="32" fill="#009922">y</text><text y="48" fill="#006611">n</text><text y="64" fill="#003308">c</text><text y="80" fill="#001a04">(</text></g>
+
+<!-- Col x=682 dur=2.4 begin=-0.3 -->
+<g><animateTransform attributeName="transform" type="translate" from="682,-96" to="682,260" dur="2.4s" begin="-0.3s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">0</text><text y="32" fill="#009922">1</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=717 dur=1.7 begin=-1.5 -->
+<g><animateTransform attributeName="transform" type="translate" from="717,-96" to="717,260" dur="1.7s" begin="-1.5s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">}</text><text y="16" fill="#00cc33">;</text><text y="32" fill="#009922">0</text><text y="48" fill="#006611">1</text><text y="64" fill="#003308">{</text><text y="80" fill="#001a04">}</text></g>
+
+<!-- Col x=752 dur=2.2 begin=-0.7 -->
+<g><animateTransform attributeName="transform" type="translate" from="752,-96" to="752,260" dur="2.2s" begin="-0.7s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">1</text><text y="16" fill="#00cc33">0</text><text y="32" fill="#009922">1</text><text y="48" fill="#006611">0</text><text y="64" fill="#003308">1</text><text y="80" fill="#001a04">1</text></g>
+
+<!-- Col x=787 dur=1.5 begin=-0.9 -->
+<g><animateTransform attributeName="transform" type="translate" from="787,-96" to="787,260" dur="1.5s" begin="-0.9s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">*</text><text y="16" fill="#00cc33">/</text><text y="32" fill="#009922">;</text><text y="48" fill="#006611">=</text><text y="64" fill="#003308">+</text><text y="80" fill="#001a04">0</text></g>
+
+<!-- Col x=822 dur=2.6 begin=-0.2 -->
+<g><animateTransform attributeName="transform" type="translate" from="822,-96" to="822,260" dur="2.6s" begin="-0.2s" repeatCount="indefinite"/>
+<text y="0"  fill="#00ff41">0</text><text y="16" fill="#00cc33">1</text><text y="32" fill="#009922">0</text><text y="48" fill="#006611">1</text><text y="64" fill="#003308">0</text><text y="80" fill="#001a04">1</text></g>
+
+</g>
+
+<!-- Center label -->
+<text x="420" y="70" font-family="'Courier New',monospace" font-size="22" font-weight="bold" fill="#00ff41" text-anchor="middle" filter="url(#mg)" opacity="0.15">DVT3004</text>
+<text x="420" y="115" font-family="monospace" font-size="9" fill="#00aa22" text-anchor="middle" opacity="0.5">// code flows through everything</text>
+</svg>

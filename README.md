@@ -137,27 +137,31 @@ $ dvt --motto
 
 ---
 
-## 🎮 Contributions — Pick Your Game!
+## 🎮 Contributions — Snake Mode
 
 <div align="center">
 
-### 🐍 Snake Mode
-
 <img src="./snake.svg" alt="Snake eating DVT3004's contributions" width="840"/>
-
-### 👾 PAC-MAN Mode
-
-<img src="./pacman.svg" alt="Pac-Man eating DVT3004's contributions" width="840"/>
 
 </div>
 
 ---
 
-## 💬 Dev Quote of the Day
+## 💻 Matrix Code Flow
 
 <div align="center">
 
-[![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark&quote=Code%20is%20like%20humor.%20When%20you%20have%20to%20explain%20it%2C%20it's%20bad.&author=Cory%20House)](https://github.com/piyushsuthar/github-readme-quotes)
+<img src="./matrix.svg" alt="Matrix code rain" width="840"/>
+
+</div>
+
+---
+
+## 💬 Dev Quote — Animated
+
+<div align="center">
+
+<img src="./typing.svg" alt="Ship it. Learn it. Repeat." width="840"/>
 
 </div>
 
