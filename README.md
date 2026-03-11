@@ -56,22 +56,13 @@ class DVT3004 {
 
 ---
 
-## ⚡ Fun Facts — Terminal
+## 🎧 Vibe Coding
 
-```bash
-$ dvt --info
+<div align="center">
 
-  👾  Bắt đầu code lúc... không nhớ nổi
-  🐛  Bug favorite: NullPointerException (classic)
-  ☕  Fuel: Cà phê · Mì tôm · Stack Overflow
-  🎮  Code review = Boss fight cuối game
-  🌙  Productive nhất: 11PM → 2AM
-  🔥  Dòng code đầu tiên: System.out.println("Xin chào!")
-  🏆  Dream: Build something that 1M người dùng
+<img src="./vibe.svg" alt="Vibe Coding — headphones on, world off" width="840"/>
 
-$ dvt --motto
-  "Ship it. Learn it. Repeat. 🔥"
-```
+</div>
 
 ---
 
@@ -88,16 +79,6 @@ $ dvt --motto
 
 ---
 
-## 🏆 Trophies
-
-<div align="center">
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=DVT3004&theme=darkhub&no-frame=true&no-bg=true&margin-w=8&column=7)](https://github.com/ryo-ma/github-profile-trophy)
-
-</div>
-
----
-
 ## 📈 Activity Graph
 
 <div align="center">
@@ -108,40 +89,11 @@ $ dvt --motto
 
 ---
 
-## 🛠 Stack
-
-<div align="center">
-
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![IntelliJ](https://img.shields.io/badge/IntelliJ-000?style=for-the-badge&logo=intellijidea&logoColor=white)
-![VS Code](https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
-
-</div>
-
----
-
-## 📌 Projects
-
-<div align="center">
-
-[![quan-ly-ca-phe-java](https://github-readme-stats.vercel.app/api/pin/?username=DVT3004&repo=quan-ly-ca-phe-java&theme=dracula&hide_border=true&bg_color=161b22&title_color=e040fb&text_color=fff&icon_color=7c4dff)](https://github.com/DVT3004/quan-ly-ca-phe-java)
-[![register](https://github-readme-stats.vercel.app/api/pin/?username=DVT3004&repo=register&theme=dracula&hide_border=true&bg_color=161b22&title_color=e040fb&text_color=fff&icon_color=7c4dff)](https://github.com/DVT3004/register)
-
-</div>
-
----
-
 ## 🃏 Lucky Cards — Spin the Deck!
 
 <div align="center">
 
-<img src="./cards.svg" alt="7 lucky cards spinning around DVT3004" width="840"/>
+<img src="./cards.svg" alt="8 lucky cards spinning around DVT3004" width="840"/>
 
 </div>
 
