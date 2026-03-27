@@ -16,7 +16,7 @@ class DVT3004 {
   String  badge   = "★ GitHub PRO";
 
   String[] code   = { "Java", "JavaScript" };
-  String[] use    = { "IntelliJ", "VS Code" };
+  String[] use    = { "Antigravity", "VS Code" };
 
   String[] builds = {
     "☕ Quản lý cà phê (Java)",
